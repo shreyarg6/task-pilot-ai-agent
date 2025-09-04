@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TaskPilot — AI Task Prioritization Assistant</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+      .controls{display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap}
+      .controls textarea{flex:1;min-height:90px}
+      .controls .field{display:flex;flex-direction:column;gap:6px}
+      .pill{padding:6px 10px;border:1px solid #e3e7ef;border-radius:10px;background:#fff}
+      .tasklist{margin-top:14px}
+      .task-chip{display:flex;align-items:center;gap:8px;background:#eef2ff;border-radius:999px;padding:6px 10px;margin:6px 6px 0 0}
+      .task-chip button{border:0;background:transparent;cursor:pointer}
+      .actions{display:flex;gap:10px;align-items:center}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>TaskPilot <span class="badge">AI Task Assistant</span></h1>
+
+      <form id="createForm" class="controls">
+        <textarea id="task_text" placeholder="Add one task, e.g., Meet Jon today at 3pm"></textarea>
+
+        <div class="field">
+          <label for="length" style="font-size:12px;color:#475569">Length</label>
+          <select id="length" class="pill">
+            <option value="">unspecified</option>
+            <option value="10">10 min</option>
+            <option value="15">15 min</option>
+            <option value="25">25 min</option>
+            <option value="30">30 min</option>
+            <option value="45">45 min</option>
+            <option value="60">1 hour</option>
+            <option value="90">1.5 hours</option>
+            <option value="120">2 hours</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="importance" style="font-size:12px;color:#475569">Importance</label>
+          <select id="importance" class="pill">
+            <option value="">auto</option>
+            <option value="high">high (urgent/asap/today)</option>
+            <option value="medium">medium</option>
+            <option value="low">low</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label style="opacity:0">.</label>
+          <button type="submit">Add task</button>
+        </div>
+      </form>
+
+      <div class="tasklist" id="tasklist"></div>
+
+      <div class="actions" style="margin-top:10px">
+        <button id="planBtn">Plan my day</button>
+        <span id="hint" style="font-size:12px;color:#64748b">Add tasks one by one, then click Plan</span>
+      </div>
+
+      <div id="chat" class="chat row" style="margin-top:18px"></div>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
