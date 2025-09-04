@@ -52,7 +52,7 @@ def ask():
     try:
         reply = chat_reply(prompt)
     except Exception:
-        reply = "(LLM unavailable) Here is the prioritized list based on heuristics."
+        reply = "(LLM unavailable) Here is the prioritized list."
 
     reply_html = '<br>'.join(html.escape(line) for line in reply.split('\n'))
     return jsonify({"reply_html": reply_html, "tasks": ranked})
